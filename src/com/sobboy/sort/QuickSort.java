@@ -11,39 +11,35 @@ public class QuickSort {
      *
      * @param args
      */
-    //为什么不能交换  交换的话会跑到大的数后面去了
     public static void main(String[] args) {
-
         int[] arr = {7, 3, 13, 65, 1, 21, 45, 5, 72, 33};
         sort(arr, 0, arr.length - 1);
     }
 
-    //注意特殊情况 只有一个比基准大  或者  只有一个比基准小
     static void sort(int[] arr, int i, int j) {
         if (i > j) {
             return;
         }
-        //基点和最后一个i交换 就能保证在中间位置
-        int middle = arr[i];
 
+        int middle = arr[i];
         int left = i;
         int right = j;
+
         while (right > left) {
             //从右找小于基准的数
             while (arr[right] >= middle && left < right) {
                 right--;
             }
-            //从左找大于基准的数，加入等号排除基准
+            //从左找大于基准的数
              while (arr[left] <= middle && left < right) {
                 left++;
             }
-            //如果只有小于数没有大于数  就不交换  等后面
+            //如果只有小于数没有大于数就不交换
             if (arr[right] < arr[left]) {
                 int tmp = arr[left];
                 arr[left] = arr[right];
                 arr[right] = tmp;
             }
-            //此时有可能
         }
         //跳出循环时left=right ,此致的位置为小于几点的数
         //交换i和基点，基点变成left
